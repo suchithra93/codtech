@@ -1,8 +1,8 @@
 Name: Suchitra B P                                                                                                                                                                                      
-Company:CODTECH IT SOLUTIONS
-ID:CT08DS8977
-Domain:Artificial Intelligence
-Duration:Nov to Dec 202
+Company:CODTECH IT SOLUTIONS                                                                                                                                                                             
+ID:CT08DS8977                                                                                                                                                                                            
+Domain:Artificial Intelligence                                                                                                                                                                           
+Duration:Nov to Dec 2024                                                                                                                                                                                 
 
 OVERVIEW OF THE PROJECT
 
