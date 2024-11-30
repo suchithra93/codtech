@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Detection</h1>
+        <p>Upload an image to "detect" its name:</p>
+        <input type="file" id="imageInput" accept="image/*">
+        <div class="image-preview" id="imagePreview">
+            <img id="uploadedImage" alt="Your uploaded image will appear here">
+        </div>
+        <div class="detection-result" id="detectionResult">
+            <p>Detected image: <span id="imageName">None</span></p>
+        </div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const imageName = document.getElementById('imageName'); // Corrected ID
+
+        // Updated mock detection logic
+        const mockimageDetection = (fileName) => {
+            const images = ["cat", "dog", "lion", "elephant", "tiger"]; // Renamed array to 'images'
+            const lowerCaseFileName = fileName.toLowerCase();
+
+            // Check if the file name contains an image name
+            for (let img of images) { // Updated loop variable to 'img'
+                if (lowerCaseFileName.includes(img)) {
+                    return img.charAt(0).toUpperCase() + img.slice(1);
+                }
+            }
+
+            // Fallback detection if no match in file name
+            const defaultimage = "Dog"; // Assume Dog if the picture is ambiguous
+            return defaultimage;
+        };
+
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadedImage.src = e.target.result;
+                    // Call mock detection (uses the file name for now)
+                    const detectedimage = mockimageDetection(file.name || "unknown.jpg");
+                    imageName.textContent = detectedimage; // Correctly updates the span content
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
+
